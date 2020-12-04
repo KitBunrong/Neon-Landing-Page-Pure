@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Saira+Condensed&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Saira Condensed", sans-serif;
+}
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 2em;
+}
+.header a {
+  font-size: 2em;
+  text-decoration: none;
+  color: #111111;
+}
+.menu-items {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+.menu-items li a {
+  font-size: 1em;
+  padding: 0.5em 1em;
+  transition: background 0.3s ease-in-out;
+}
+.menu-items li a:hover {
+  background-color: #ccc7d3;
+}
+
+/** menu button */
+.menu-btn {
+  position: relative;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 1.5em;
+  height: 1.5em;
+  cursor: pointer;
+  z-index: 1;
+}
+.menu-btn__lines,
+.menu-btn__lines::before,
+.menu-btn__lines::after {
+  background-color: #111111;
+  height: 0.1em;
+  width: 1.5em;
+  transition: all 0.3s ease-in-out;
+}
+.menu-btn__lines::before,
+.menu-btn__lines::after {
+  content: "";
+  position: absolute;
+}
+.menu-btn__lines::before {
+  transform: translateY(-0.5em);
+}
+.menu-btn__lines::after {
+  transform: translateY(0.5em);
+}
+.menu-btn.open .menu-btn__lines {
+  transform: translateX(2rem);
+  background-color: transparent;
+}
+.menu-btn.open .menu-btn__lines::before {
+  transform: rotate(45deg) translate(-1.5rem, 1.5rem);
+  background-color: #ffffff;
+}
+.menu-btn.open .menu-btn__lines::after {
+  transform: rotate(-45deg) translate(-1.5rem, -1.5rem);
+  background-color: #ffffff;
+}
+
+/** For tablet devices */
+@media (min-width: 768px) and (max-width: 1023px) {
+}
+
+/** For mobile devices */
+@media (max-width: 767px) {
+  .header a {
+    font-size: 1.2em;
+  }
+  .menu-btn {
+    display: flex;
+  }
+  .menu-items {
+    flex-direction: column;
+    justify-content: space-around;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #5a4d70;
+    height: 100vh;
+    transform: translateX(100vw);
+    transition: transform 0.4s ease-in-out;
+  }
+  .menu-items.open {
+    transform: translateX(0vw);
+  }
+  .menu-items li {
+    width: 100vw;
+    height: 100%;
+  }
+  .menu-items li a {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 5vh;
+    color: #ffffff;
+  }
+  .menu-items li a:hover {
+    color: #111111;
+  }
+}
